@@ -100,6 +100,10 @@ export default class Cursor extends Array<Object> {
     };
 
     this._buildObjectsFromResponse = response => {
+      if(!response.data) {
+        response.data = {}
+      }
+
       return response.data.map(item => {
         let That: any = this._targetClass;
         if (That.name === 'AbstractObject') {
